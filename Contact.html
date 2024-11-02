@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - K.K. Solar Power System</title>
+  <link rel="icon" type="image/x-icon" href="/images/kkslogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: #333;
+      font-family: 'Fira Sans', sans-serif;
+      background-image: url(images/photo-1497440001374-f26997328c1b.jpg);
+      height: 100vh;
+      background-repeat: no-repeat;
+    }
+
+    /* Social Media Top Bar */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15%;
+      background-color: #02023f;
+      color: white;
+    }
+
+    .top-bar .social-media {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar .social-media a {
+      font-size: 1rem;
+      color: white;
+      margin-right: 15px;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .top-bar .social-media a:hover {
+      color: #0456A1;
+    }
+
+    .top-bar .contact-info {
+      font-size: 0.8rem;
+      margin-right: -100px;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      display: flex;
+      position: absolute;
+      left: 0;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15%;
+      border-bottom: 1px solid #6f6e6e;
+      background: #fff;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+      /* For dropdown positioning */
+    }
+
+    /* Dropdown Menu */
+    nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+    }
+
+    nav ul li .dropdown li {
+      margin: 0;
+    }
+
+    nav ul li .dropdown li a {
+      padding: 10px 15px;
+      display: block;
+      white-space: nowrap;
+      color: #333;
+      text-decoration: none;
+    }
+
+    nav ul li .dropdown li a:hover {
+      background-color: #f5f5f5;
+      color: mediumblue;
+    }
+
+    /* Show Dropdown on Hover */
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+
+    nav li a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+    }
+
+    nav li a:hover {
+      color: mediumblue;
+    }
+
+    /* Hamburger Icon (Menu Icon) */
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition-duration: .3s;
+      display: none;
+    }
+
+    .bars {
+      width: 100%;
+      height: 4px;
+      background-color: #333;
+      border-radius: 5px;
+      transition-duration: .3s;
+    }
+
+    /* Checkbox is hidden */
+    #checkbox {
+      display: none;
+    }
+
+    #checkbox:checked+.toggle #bar1 {
+      transform: rotate(45deg);
+      transition-duration: 0.3s;
+      transform-origin: center;
+      /* Aligns the bar with the center */
+      position: relative;
+      top: 12px;
+      /* Adjust the position to match the cross alignment */
+    }
+
+    #checkbox:checked+.toggle #bar2 {
+      opacity: 0;
+      /* Hide the middle bar */
+      transition-duration: 0.3s;
+    }
+
+    #checkbox:checked+.toggle #bar3 {
+      transform: rotate(-45deg);
+      transition-duration: 0.3s;
+      transform-origin: center;
+      /* Aligns the bar with the center */
+      position: relative;
+      top: -15px;
+      /* Adjust the position to match the cross alignment */
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px;
+      background: rgba(209, 206, 206, 0.9);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 120px;
+    }
+
+    .contact h1 {
+      margin-bottom: 20px;
+      color: #0456A1;
+      font-size: 3.5vmax;
+      text-align: center;
+      /* Ensures the header is centered */
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      align-items: center;
+      /* Aligns form items to the center */
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-size: 20px;
+      text-align: center
+        /* Centers the label text */
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      max-width: 400px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      /* Removed duplicate border-radius definition */
+      transition: border 0.1s;
+      box-sizing: border-box;
+      background-color: rgba(142, 152, 245, 0.5);
+      color: black;
+      margin: 0 auto;
+      /* Centers input and textarea elements */
+    }
+
+    .form-group input:hover,
+    .form-group textarea:hover {
+      border: 3px solid #8792fc;
+      background-color: rgba(226, 226, 226, 0.5);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .form-group button {
+      cursor: pointer;
+      position: relative;
+      padding: 10px 24px;
+      font-size: 18px;
+      color: #fff;
+      border: #02023f 2px solid;
+      border-radius: 34px;
+      background-color: #02023f;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      overflow: hidden;
+    }
+
+    .form-group button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 50px;
+      height: 50px;
+      border-radius: inherit;
+      scale: 0;
+      z-index: -1;
+      background-color: #8792fc;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .form-group button:hover::before {
+      scale: 3;
+    }
+
+
+    .form-group button:hover {
+      color: #212121;
+      scale: 1.1;
+      box-shadow: 0 0px 20px rgba(98, 104, 193, 0.4);
+    }
+
+    .form-group button:active {
+      scale: 1;
+
+    }
+
+
+    .footer p {
+      text-align: center;
+      margin: 0;
+    }
+
+    nav i {
+      font-size: 1.6vw;
+      font-weight: 800;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .logo img {
+        height: 70px;
+      }
+
+      nav ul {
+        max-height: 0;
+        /* Initially hidden */
+        opacity: 0;
+        overflow: hidden;
+        /* Prevent content from overflowing */
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+        /* No padding initially */
+        top: 90px;
+        /* Adjusted for the navbar height */
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+      }
+
+      nav ul.show-menu {
+        max-height: 500px;
+        /* Adjust based on the expected height of the menu */
+        opacity: 1;
+        padding: 10px 0;
+        /* Add padding back when shown */
+      }
+
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      nav ul li a {
+        color: #333;
+        font-size: 18px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      }
+
+      /* Show the toggle (hamburger) on small screens */
+      .toggle {
+        display: flex;
+      }
+
+      /* Show the menu when the checkbox is checked */
+      #checkbox:checked~nav ul {
+        display: flex;
+      }
+
+      /* Class to handle menu toggle */
+      .show-menu {
+        display: flex;
+      }
+
+      .contact-info {
+        display: none;
+      }
+
+      .top-bar .social-media a {
+        font-size: 1.5rem
+      }
+
+      .container {
+        padding: 20px;
+        margin-top: 85px;
+        width: 400px;
+      }
+
+      h1 {
+        font-size: 5vw;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        max-width: 300px;
+        width: 100%;
+      }
+
+      .footer {
+        padding: 20px 10px;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .footer_section {
+        margin: 10px 0;
+        text-align: left;
+      }
+
+      .footer_section h2 {
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      .footer_section p {
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .section2 p {
+        width: 300px;
+      }
+
+      .footer_section p,
+      .social_links a {
+        font-size: 14px;
+      }
+
+      .social_links i {
+        font-size: 5vw;
+      }
+
+      .social_links i {
+        margin-right: 10px;
+        font-size: 3.3vmax;
+        display: flex;
+        align-items: left;
+        justify-content: left;
+      }
+
+      .footer_bottom p {
+        font-size: 14px;
+      }
+
+      .footer_links {
+        flex-direction: column;
+      }
+
+      .footer_links li {
+        margin: 5px 0;
+      }
+
+      .hr1 {
+        margin-top: 10px;
+      }
+
+      .hr2 {
+        margin-top: 10px;
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .container{
+        max-width: 300px;
+        width: 100%;
+      }
+    }
+
+    .footer {
+      background-color: #141414;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+      margin-top: -5px;
+    }
+
+    .footer_section {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .footer_section h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer_section p {
+      font-size: 14px;
+      margin: 5px 0;
+      text-align: left;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .footer_section2 h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+      text-align: center;
+      flex: 1;
+      margin: 0 200px;
+    }
+
+    .footer_bottom {
+      background-color: #141414;
+      color: #bbb;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer_bottom p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .footer_links {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer_links li {
+      margin: 0 10px;
+    }
+
+    .footer_links a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .footer_links a:hover {
+      color: #fff;
+    }
+
+    hr {
+      margin-top: 10px;
+    }
+
+    .services {
+      list-style: none;
+    }
+
+    .section2 i {
+      font-size: 20px;
+      color: #eb7e6b;
+      /* Sets the color of the icon */
+      margin-right: 5px;
+    }
+
+    .section2 h1 {
+      font-size: 19px;
+      color: #c7c0c0;
+    }
+
+    .section2 p {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      font-weight: normal;
+      margin-left: 30px;
+      width: 400px;
+      /* Sets the font for the paragraph */
+      /* Removes the default margin */
+      /* Adds padding for spacing */
+    }
+
+    .section2 span p{
+      width: 270px;
+    }
+
+    .footer_section h2 {
+      font-size: 25px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: #007BFF;
+    }
+
+
+    .quick_access li a:hover {
+      text-decoration: underline;
+      color: #eb7e6b;
+    }
+
+    .quick_access ul li {
+      list-style: none;
+    }
+                                                                                              
+    .quick_access a {
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #fff;
+    }
+
+    .quick_access,
+    .home_logo {
+      flex: 1;
+      margin-top: 100px;
+    }
+
+    .home_logo img {
+      height: 100px;
+      cursor: pointer;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: box-shadow 0.3s ease;
+      /* Smooth transition for the shadow */
+    }
+
+    .home_logo img:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+    }
+
+
+    .social_links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .social_links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .social_links i {
+      font-size: 3.3vmax;
+    }
+
+    .social_links .whatsapp i {
+      transition: color 0.3s;
+    }
+
+    .social_links .whatsapp i:hover {
+      color: chartreuse;
+    }
+
+    .social_links .facebook i {
+      transition: color 0.3s;
+    }
+
+    .social_links .facebook i:hover {
+      color: cornflowerblue;
+    }
+
+    .social_links .instagram i {
+      transition: color 0.3s;
+    }
+
+    .social_links .instagram i:hover {
+      color: hotpink;
+    }
+
+    .keep-connected h2 {
+      margin-top: 30px;
+    }
+
+    .form-group span {
+      color: red;
+    }
+
+    .services i {
+      color: #eb7e6b;
+    }
+
+    .footer-home {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Social Media and Contact Section -->
+  <div class="top-bar">
+    <div class="social-media">
+      <a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank"><i
+          class="ri-facebook-circle-fill"></i></a>
+      <a href="https://www.instagram.com/kksolarpowersystem/" target="_blank"><i class="ri-instagram-fill"></i></a>
+    </div>
+
+    <div class="contact-info">
+      <span>Email: kksolar.mbd@gmail.com | Phone: +91 8218798467</span>
+    </div>
+  </div>
+  <!-- Navigation Bar-->
+  <nav>
+    <a class="logo" href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="dropdown">
+          <li><a href="#">Solar Rooftop Systems (Subsidy Rooftop Systems)</a></li>
+          <li><a href="#">Solar Power System Installation</a></li>
+          <li><a href="#">Solar Maintenance</a></li>
+          <li><a href="#">Solar Residential Systems</a></li>
+          <li><a href="#">Solar Commercial Solutions</a></li>
+          <li><a href="#">Solar Atta Chakki</a></li>
+          <li><a href="#">Solar Irrigation Systems <span>(Solar Water Pumps for Irrigation)</span></a></li>
+          <li><a href="#">Solar Electric Fencing</a></li>
+        </ul>
+      </li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="About.html">About Us</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+    </ul>
+
+    <input type="checkbox" id="checkbox" onclick="toggleMenu()">
+    <label for="checkbox" class="toggle">
+      <div class="bars" id="bar1"></div>
+      <div class="bars" id="bar2"></div>
+      <div class="bars" id="bar3"></div>
+    </label>
+  </nav>
+  <!-- Navigation Bar end-->
+
+  <div class="container">
+    <div class="contact">
+      <form id="contactForm">
+        <h1>Contact Us</h1>
+        <div class="form-group">
+          <label for="name">Name<span class="required">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email<span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone<span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message<span class="required">*</span></label>
+          <textarea name="message" id="message" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" id="sendus">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3495.4770589400337!2d78.74344877496397!3d28.82465377533126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390afb91568c84b7%3A0xe422f3b94a7e313e!2sK.K.%20Solar%20Power%20System!5e0!3m2!1sen!2sin!4v1717843772576!5m2!1sen!2sin"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message'),
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const result = await response.text();
+        alert(result); // Display success message
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was an error processing your request.');
+      }
+    });
+  </script>
+
+  <!-- footer-->
+  <footer>
+    <div class="contact_details">
+      <div class="footer">
+        <div class="footer_section">
+          <h2>More About Us</h2>
+          <p>
+            K.K. Solar Power System is dedicated to providing sustainable energy solutions through innovative solar
+            projects. We specialize in designing, installing, and maintaining solar power systems for homes, businesses,
+            and industries. Our goal is to deliver high-quality, reliable, and cost-effective solar solutions.
+          </p>
+
+          <div class="footer-home">
+            <div class="quick_access">
+              <h2>Quick Access</h2>
+              <ul>
+                <li><i class="ri-arrow-right-up-fill"></i><a href="index.html">Home</a></li>
+                <li><i class="ri-arrow-right-up-fill"></i><a href="Services.html">Services</a></li>
+                <li><i class="ri-arrow-right-up-fill"></i><a href="About.html">About</a></li>
+                <li><i class="ri-arrow-right-up-fill"></i><a href="Contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="home_logo">
+              <a href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hr2">
+        <div class="footer_section">
+          <div class="section2">
+            <h2>Contact Information</h2>
+            <h1><i class="ri-map-pin-fill"></i> K.K. SOLAR POWER SYSTEM<span>
+                <p>Ekta Colony, behind Mandi Samiti, Linepar, Majhola, Moradabad, 244001, U.P.</p>
+              </span></h1>
+            <h1><i class="ri-phone-fill"></i> Phone
+              <span>
+                <p>8218798467, 9412373668</p>
+              </span>
+            </h1>
+            <h1><i class="ri-mail-fill"></i> E-mail <span>
+                <p>kksolar.mbd@gmail.com</p>
+              </span></h1>
+          </div>
+        </div>
+
+        <hr class="hr1">
+        <div class="footer_section">
+          <h2>Our Services</h2>
+          <ul class="services">
+            <li><i class="ri-arrow-right-up-fill"></i>Residential Installations</li>
+            <li><i class="ri-arrow-right-up-fill"></i>Commercial Solutions</li>
+            <li><i class="ri-arrow-right-up-fill"></i>Solar System Maintenance/Servicing</li>
+            <li><i class="ri-arrow-right-up-fill"></i>Solar Irrigation Systems</li>
+            <li><i class="ri-arrow-right-up-fill"></i>Solar Atta Chakki</li>
+            <li><i class="ri-arrow-right-up-fill"></i>Solar Electric Fencing System</li>
+          </ul>
+
+          <div class="keep-connected">
+            <h2>Keep Connected</h2>
+            <ul class="social_links">
+              <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank"><i
+                    class="ri-facebook-circle-fill"></i></a></li>
+              <li class="instagram"><a href="https://www.instagram.com/kksolarpowersystem/" target="_blank"><i
+                    class="ri-instagram-fill"></i></a></li>
+              <li class="whatsapp"><a href="https://wa.me/918218798467" target="_blank"><i
+                    class="ri-whatsapp-fill"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <p>&copy; 2024 K.K. SOLAR POWER SYSTEM All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

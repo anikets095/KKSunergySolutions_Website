@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.K. Solar Power System</title>
+    <link rel="icon" type="image/x-icon" href="/images/kkslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #333;
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        /* Social Media Top Bar */
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15%;
+            background-color: #02023f;
+            color: white;
+        }
+
+        .top-bar .social-media {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar .social-media a {
+            font-size: 1.1rem;
+            color: white;
+            margin-right: 15px;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .top-bar .social-media a:hover {
+            color: #0456A1;
+        }
+
+        .top-bar .contact-info {
+            font-size: 0.8rem;
+            margin-right: -100px;
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15%;
+            border-bottom: 1px solid #6f6e6e;
+            background: #fff;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+            /* For dropdown positioning */
+        }
+
+        /* Dropdown Menu */
+        nav ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 150px;
+            background-image: url;
+        }
+
+        nav ul li .dropdown li {
+            margin: 0;
+        }
+
+        nav ul li .dropdown li a {
+            padding: 10px 15px;
+            display: block;
+            white-space: nowrap;
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav ul li .dropdown li a:hover {
+            background-color: #f5f5f5;
+            color: mediumblue;
+        }
+
+        /* Show Dropdown on Hover */
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+
+        nav li a:hover {
+            color: mediumblue;
+        }
+
+        /* Hamburger Icon (Menu Icon) */
+        .toggle {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition-duration: .3s;
+            display: none;
+        }
+
+        .bars {
+            width: 100%;
+            height: 4px;
+            background-color: #333;
+            border-radius: 5px;
+            transition-duration: .3s;
+        }
+
+        /* Checkbox is hidden */
+        #checkbox {
+            display: none;
+        }
+
+        #checkbox:checked+.toggle #bar1 {
+            transform: rotate(45deg);
+            transition-duration: 0.3s;
+            transform-origin: center;
+            /* Aligns the bar with the center */
+            position: relative;
+            top: 12px;
+            /* Adjust the position to match the cross alignment */
+        }
+
+        #checkbox:checked+.toggle #bar2 {
+            opacity: 0;
+            /* Hide the middle bar */
+            transition-duration: 0.3s;
+        }
+
+        #checkbox:checked+.toggle #bar3 {
+            transform: rotate(-45deg);
+            transition-duration: 0.3s;
+            transform-origin: center;
+            /* Aligns the bar with the center */
+            position: relative;
+            top: -15px;
+            /* Adjust the position to match the cross alignment */
+        }
+
+        /* Responsive Styles for Small Screens */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 70px;
+            }
+
+            nav ul {
+                max-height: 0;
+                /* Initially hidden */
+                opacity: 0;
+                overflow: hidden;
+                /* Prevent content from overflowing */
+                flex-direction: column;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 0;
+                /* No padding initially */
+                top: 90px;
+                /* Adjusted for the navbar height */
+                transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+            }
+
+            nav ul.show-menu {
+                max-height: 500px;
+                /* Adjust based on the expected height of the menu */
+                opacity: 1;
+                padding: 10px 0;
+                /* Add padding back when shown */
+            }
+
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                color: #333;
+                font-size: 18px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+            /* Show the toggle (hamburger) on small screens */
+            .toggle {
+                display: flex;
+            }
+
+            /* Show the menu when the checkbox is checked */
+            #checkbox:checked~nav ul {
+                display: flex;
+            }
+
+            /* Class to handle menu toggle */
+            .show-menu {
+                display: flex;
+            }
+
+            .contact-info {
+                display: none;
+            }
+
+            .top-bar .social-media a {
+                font-size: 1.5rem
+            }
+
+            /* footer responsive css */
+
+            .footer {
+                padding: 20px 10px;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .footer_section {
+                margin: 10px 0;
+                text-align: left;
+            }
+
+            .footer_section h2 {
+                text-align: left;
+                margin-top: 10px;
+            }
+
+            .footer_section p {
+                max-width: 400px;
+                width: 100%;
+            }
+
+            .section2 p {
+                width: 300px;
+            }
+
+            .footer_section p,
+            .social_links a {
+                font-size: 14px;
+            }
+
+            .social_links i {
+                font-size: 5vw;
+            }
+
+            .social_links i {
+                margin-right: 10px;
+                font-size: 3.3vmax;
+                display: flex;
+                align-items: left;
+                justify-content: left;
+            }
+
+            .footer_bottom p {
+                font-size: 14px;
+            }
+
+            .footer_links {
+                flex-direction: column;
+            }
+
+            .footer_links li {
+                margin: 5px 0;
+            }
+
+            .hr1 {
+                margin-top: 10px;
+            }
+
+            .hr2 {
+                margin-top: 10px;
+            }
+
+            .contact {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            /* main body css responsiveness */
+            .header h1 {
+                font-size: 6vw;
+            }
+
+            .header span {
+                font-size: 7vw;
+            }
+
+            .subheading h2 {
+                font-size: 3vw;
+            }
+
+            .contact_button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .projects h2 {
+                margin-top: 70px;
+                font-size: 20px;
+            }
+
+            .projects,
+            .project-item {
+                display: contents;
+                margin: 0 auto;
+            }
+
+            .project-item,
+            .project-gallery {
+                width: 300px;
+            }
+
+            .project-item img {
+                border-radius: 20px;
+            }
+
+            .why-choose-us ul {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .services-img ul {
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+
+        /* Footer CSS Start */
+        .footer {
+            background-color: #141414;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+            margin-top: -5px;
+        }
+
+        .footer_section {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .footer_section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer_section p {
+            font-size: 14px;
+            margin: 5px 0;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .footer_section2 h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+            text-align: center;
+            flex: 1;
+            margin: 0 200px;
+        }
+
+        .footer_bottom {
+            background-color: #141414;
+            color: #bbb;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer_bottom p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .footer_links {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer_links li {
+            margin: 0 10px;
+        }
+
+        .footer_links a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer_links a:hover {
+            color: #fff;
+        }
+
+        .footer_section h2 {
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #007BFF;
+        }
+
+        .social_links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .social_links a {
+            color: #D3D3D3;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .social_links i {
+            font-size: 3.3vmax;
+        }
+
+        .social_links .whatsapp i {
+            transition: color 0.3s;
+        }
+
+        .social_links .whatsapp i:hover {
+            color: chartreuse;
+        }
+
+        .social_links .facebook i {
+            transition: color 0.3s;
+        }
+
+        .social_links .facebook i:hover {
+            color: cornflowerblue;
+        }
+
+        .social_links .instagram i {
+            transition: color 0.3s;
+        }
+
+        .social_links .instagram i:hover {
+            color: hotpink;
+        }
+
+        hr {
+            margin-top: 10px;
+        }
+
+        .section2 i {
+            font-size: 20px;
+            color: #eb7e6b;
+            /* Sets the color of the icon */
+            margin-right: 5px;
+        }
+
+        .section2 h1 {
+            font-size: 15px;
+            color: #D3D3D3;
+            margin: 40px 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        .section2 p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #fff;
+            margin-left: 30px;
+            width: 20vw;
+            /* Sets the font for the paragraph */
+            /* Removes the default margin */
+            /* Adds padding for spacing */
+        }
+
+        .footer_section li {
+            list-style: none;
+            padding: 10px;
+        }
+
+
+        .footer_section li a {
+            text-decoration: none;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .quick_access li a:hover {
+            text-decoration: underline;
+            color: #eb7e6b;
+        }
+
+        .home_footer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .quick_access,
+        .home_logo {
+            flex: 1;
+        }
+
+        .home_logo img {
+            height: 100px;
+            cursor: pointer;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: box-shadow 0.3s ease;
+            /* Smooth transition for the shadow */
+        }
+
+        .home_logo img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer CSS end */
+
+        /*main body CSS start */
+        /* Main Header Container with background carousel */
+        .header {
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            animation: backgroundCarousel 20s infinite;
+            /* Animation added */
+        }
+
+        /* CSS keyframes for background carousel */
+        @keyframes backgroundCarousel {
+            0% {
+                background-image: url('/images/beautiful-alternative-energy-plant-with-solar-panels.jpg');
+            }
+
+            20% {
+                background-image: url('/images/solar_background.webp');
+            }
+
+            40% {
+                background-image: url('/images/wallpaperflare.com_wallpaper.jpg');
+            }
+
+            60% {
+                background-image: url('/images/img1.jpg');
+            }
+
+            80% {
+                background-image: url('/images/img2.jpg');
+            }
+
+            100% {
+                background-image: url('/images/beautiful-alternative-energy-plant-with-solar-panels.jpg');
+            }
+        }
+
+        /* Dark Overlay to improve text readability */
+        .header_bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Overlay */
+            z-index: 1;
+        }
+
+        /* Content styling inside header */
+        .kksolar {
+            position: relative;
+            z-index: 2;
+            /* Ensure text is on top of the overlay */
+        }
+
+        .header_bg h2 {
+            color: #e6c800;
+            margin-top: 10px;
+        }
+
+        /* Animations for text */
+        .header h1 {
+            font-size: 4vmax;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            /* Shadow for text */
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header span {
+            color: #ffcc00;
+            font-size: 5vw;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Button hover effect */
+        .contact_button {
+            background-color: #ffcc00;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 40px;
+            border: 2px solid #000;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            animation: bounceIn 1.5s ease-out;
+            text-decoration: none;
+        }
+
+        .contact_button:hover {
+            background-color: #333;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .buttons {
+            margin-top: 50px;
+        }
+
+        /* Keyframe Animations for text */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .about-us h2,
+        .services h2,
+        .products h2,
+        .projects h2 {
+            color: #1e293b;
+            text-align: center;
+            font-size: 2.3rem;
+            font-family: "Afacad Flux", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: bold;
+            font-style: normal;
+            font-variation-settings:
+                "slnt" 0;
+        }
+
+
+        /* Main About Us Section */
+        .about-us {
+            text-align: center;
+            padding: 120px 40px;
+            margin: 0 auto;
+            color: #fff;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+        }
+
+        /* Improved Heading */
+        .about-us h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Enhanced paragraph text */
+        .about-us p {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 40px;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-in-out 0.2s;
+        }
+
+        /* Stylish Button */
+        .about-us .learn-more {
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 0;
+            background-color: #007BFF;
+            box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .about-us .learn-more:hover {
+            letter-spacing: 3px;
+            background-color: hsl(261deg 80% 48%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+        }
+
+        .about-us .learn-more:active {
+            letter-spacing: 3px;
+            background-color: hsl(261deg 80% 48%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+            transform: translateY(10px);
+            transition: 100ms;
+        }
+
+
+        /* Points Flexbox */
+        .about_us_points {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* Individual Point Cards */
+        .about_us_points .points {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            flex: 1 1 calc(25% - 40px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .about_us_points .points:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Points Content */
+        .points img {
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .points:hover img {
+            transform: rotate(10deg);
+        }
+
+        .points p {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #333;
+            font-family: 'Franklin Gothic Medium';
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .products,
+        .projects {
+            text-align: justify;
+            padding: 10px 40px;
+            margin: 100px 20vw;
+            color: #333;
+        }
+
+        .call-to-action,
+        .why-choose-us {
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/solarpanels.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #0456A1;
+            padding: 100px 40px;
+        }
+
+        .call-to-action {
+            text-align: center;
+        }
+
+        .why-choose-us {
+            padding: 170px 40px;
+        }
+
+        /* Optional: Add background attachment for a parallax effect */
+        .call-to-action,
+        .why-choose-us {
+            background-attachment: fixed;
+        }
+
+        /* Ensure text is readable */
+
+        .call-to-action h2,
+        .why-choose-us h2 {
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 2.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .call-to-action p {
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 3vw;
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .call-to-action p {
+            font-size: 1.3rem;
+            line-height: 3;
+            text-align: center;
+            color: #ffff;
+        }
+
+        .services p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.3rem;
+            color: #6f6e6e;
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+
+
+        .why-choose-us ul {
+            display: flex;
+            justify-content: space-between;
+            /* Space the items evenly */
+            margin: 50px 10px 0 20px;
+            padding: 50px;
+            text-align: justify;
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            list-style: none;
+            background-color: #141414;
+            /* Add background color */
+            border-radius: 10px;
+            /* Smooth corners */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            /* Add a soft shadow */
+        }
+
+        .why-choose-us li {
+            flex: 1;
+            /* Makes sure list items take equal width */
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            /* Center the text inside each item */
+            background-color: #141414;
+            /* Individual background for each item */
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .why-choose-us li:hover {
+            background-color: #4a90e2;
+            /* Change background color on hover */
+            color: #ffffff;
+            /* Change text color on hover */
+            transform: translateY(-10px);
+            /* Slight upward movement on hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            /* Deepen shadow on hover */
+        }
+
+        .why-choose-us li::before {
+            content: '✔';
+            /* Add a checkmark or any icon */
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: #4a90e2;
+            /* Icon color */
+        }
+
+        .services ul {
+            display: flex;
+            justify-content: center;
+            gap: 3vw;
+        }
+
+        .services li {
+            text-align: center;
+            margin: 30px;
+            font-size: 1.3rem;
+            color: #6f6e6e;
+        }
+
+        .services {
+            padding: 100px;
+            text-align: center;
+            margin-top: -100px;
+            background-color: #141414;
+        }
+
+        .services h2 {
+            color: #fff;
+        }
+
+        .services img {
+            height: 5rem;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+
+        .learn-more,
+        .contact-us {
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 0;
+            background-color: #4a90e2;
+            box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .learn-more:hover,
+        .contact-us:hover {
+            letter-spacing: 3px;
+            background-color: hsl(261, 58%, 59%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+        }
+
+
+        .learn-more .contact-us:active {
+            letter-spacing: 3px;
+            background-color: hsl(261deg 80% 48%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+            transform: translateY(10px);
+            transition: 100ms;
+        }
+
+        .projects {
+            width: 100%;
+            margin: 0 auto;
+            padding: 100px;
+        }
+
+        .projects .project-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px auto;
+            max-width: 1200px;
+            /* Contain the content within a reasonable width */
+        }
+
+        .projects .project-item {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            flex: 1 1 calc(30% - 20px);
+            /* Default to 3 items per row on large screens */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            max-width: 350px;
+        }
+
+        .projects .project-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .projects .project-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .projects .project-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .projects .project-item p {
+            padding: 15px;
+            font-size: 1.1em;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .products {
+            text-align: center;
+            margin: 0 auto;
+            background-image: url(/images/v915-techi-007-l.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .products p {
+            color: #333;
+            font-size: 15px;
+            font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+
+        /* Product carousel styles */
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 100px 40px;
+        }
+
+        .products h2 {
+            margin-top: 60px;
+        }
+
+        .carousel-item {
+            min-width: 150px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 14vw;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .scroll-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-button.left {
+            left: 0;
+        }
+
+        .scroll-button.right {
+            right: 0;
+        }
+
+
+        /* Remove this to keep buttons always visible */
+        .carousel-container.show-buttons .scroll-button {
+            opacity: 1;
+            /* Makes the buttons visible */
+            pointer-events: all;
+            display: block;
+            /* Enables button clicks when visible */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Social Media and Contact Section -->
+    <div class="top-bar">
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank"><i
+                    class="ri-facebook-circle-fill"></i></a>
+            <a href="https://www.instagram.com/kksolarpowersystem/" target="_blank"><i
+                    class="ri-instagram-fill"></i></a>
+        </div>
+
+        <div class="contact-info">
+            <span>Email: kksolar.mbd@gmail.com | Phone: +91 8218798467</span>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a class="logo" href="index.html"><img src="/images/kklogo.png" alt="K.K. Solar Power System Logo"></a>
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <a href="#">Services</a>
+                <ul class="dropdown">
+                    <li><a href="#">Solar Rooftop Systems (Subsidy Rooftop Systems)</a></li>
+                    <li><a href="#">Solar Power System Installation</a></li>
+                    <li><a href="#">Solar Maintenance</a></li>
+                    <li><a href="#">Solar Residential Systems</a></li>
+                    <li><a href="#">Solar Commercial Solutions</a></li>
+                    <li><a href="#">Solar Atta Chakki</a></li>
+                    <li><a href="#">Solar Irrigation Systems <span>(Solar Water Pumps for Irrigation)</span></a></li>
+                    <li><a href="#">Solar Electric Fencing</a></li>
+                </ul>
+            </li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+
+        <input type="checkbox" id="checkbox" onclick="toggleMenu()">
+        <label for="checkbox" class="toggle">
+            <div class="bars" id="bar1"></div>
+            <div class="bars" id="bar2"></div>
+            <div class="bars" id="bar3"></div>
+        </label>
+    </nav>
+    <!-- Navigation Bar end -->
+
+    <!-- Main Body Material -->
+    <div class="header">
+        <div class="header_bg">
+            <div class="kksolar">
+                <h1>Welcome to, <br><span>K.K. Solar Power System.</span></h1>
+                <p>A home of complete solar energy solutions. Authorized sale & service of all kinds of solar systems.
+                </p>
+                <div class="subheading">
+                    <h2>सौर ऊर्जा अपनाएं, अपना बिजली का बिल कम पाएं।</h2>
+                </div>
+                <div class="buttons">
+                    <a href="#lower-section" class="contact_button">Know More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="lower-section">
+        <div class="main">
+            <!-- About Us Section -->
+            <div class="about-us">
+                <div class="about-points">
+                    <h2>About Us</h2>
+                    <p>At Solar Energy Solutions, we are committed to delivering top-quality solar installations and
+                        exceptional
+                        customer services.</p>
+                    <div class="about_us_points">
+                        <div class="points">
+                            <img src="/images/maintenance (2).png" alt="xpert Solar Installations">
+                            <p>Expert Solar Installations</p>
+                        </div>
+                        <div class="points">
+                            <img src="/images/upcycling.png" alt="Sustainability Focused">
+                            <p>Sustainability Focused</p>
+                        </div>
+                        <div class="points">
+                            <img src="/images/customer.png" alt="Customer-Centric Service">
+                            <p>Customer-Centric Service</p>
+                        </div>
+                        <div class="points">
+                            <img src="/images/solar-energy.png" alt="High-Quality Equipment">
+                            <p>High-Quality Equipment</p>
+                        </div>
+                    </div>
+                    <button class="learn-more" onclick="location.href='about.html'">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services Section -->
+    <div class="services">
+        <h2>Our Services</h2>
+        <p>We provide several services to our customers.</p>
+        <div class="services-img">
+            <ul>
+                <li>
+                    <img src="/images/eco-house.png" alt="Residential Solar Icon">
+                    <p>Residential Solar Installations</p>
+                </li>
+                <li>
+                    <img src="/images/vecteezy_solar-panels-on-the-factory-roof-with-electric-poles_-removebg-preview.png"
+                        alt="Commercial Solar Icon">
+                    <p>Commercial Solar Solutions</p>
+                </li>
+                <li>
+                    <img src="/images/download__4_-removebg-preview.png" alt="Solar Maintenance Icon">
+                    <p>Solar System Services/Maintenance</p>
+                </li>
+            </ul>
+        </div>
+        <button class="learn-more" onclick="location.href='services.html'">Learn More</button>
+    </div>
+
+    <!-- Products Section -->
+    <div class="products">
+        <h2>Our Solar Products</h2>
+        <div class="carousel-container">
+            <button class="scroll-button left" onclick="scrollLeft()">&#10094;</button>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="/images/invergy-8kw-single-phase-hybrid-inverter-removebg-preview.png"
+                        alt="Solar Inverter">
+                    <p>Solar Inverters</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/batteries.jpg" alt="Solar Batteries">
+                    <p>Solar Batteries</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/pvmodules-removebg-preview.png" alt="Solar PV Modules">
+                    <p>Solar PV Modules</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/invt-solar-vfd-gd20-500x500-removebg-preview (1).png" alt="Solar VFDs">
+                    <p>Solar VFDs</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/Solar-Submersible-1-removebg-preview.png" alt="Solar Submersible/Surface Motors">
+                    <p>Solar Irrigation Systems</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/solar-support-structures-250x250-removebg-preview.png"
+                        alt="Solar Mounting Structure">
+                    <p>Solar Mounting Structure</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/solar-led-street-light-removebg-preview.png" alt="Solar Street Lights">
+                    <p>Solar Street Lights</p>
+                </div>
+            </div>
+            <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li>Expertise & Experience: Over 30 years in the solar industry.</li>
+            <li>Quality Products: We use only the best solar technology.</li>
+            <li>Customer Satisfaction: Proven track record of happy clients.</li>
+            <li>Comprehensive Service: From consultation to maintenance.</li>
+        </ul>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="projects">
+        <h2>Our Work Speaks for Itself</h2>
+        <div class="project-gallery">
+            <div class="project-item">
+                <img src="/images/IMG_20240224_143538.jpg" alt="Project 1">
+                <p>Residential Solar Installation</p>
+            </div>
+            <div class="project-item">
+                <img src="/images/IMG_20230630_121530.jpg" alt="Project 2">
+                <p>Commercial Solar Installation</p>
+            </div>
+            <div class="project-item">
+                <img src="/images/2023-06-11.jpg" alt="Project 3">
+                <p>Industrial Solar Installation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="call-to-action">
+        <h2>Ready to Go Solar?</h2>
+        <p>Get a Free Consultation Today!</p>
+        <button class="contact-us" onclick="location.href='contact.html'">Contact Us</button>
+    </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer_section">
+                <div class="home_footer">
+                    <div class="quick_access">
+                        <h2>Quick Access</h2>
+                        <ul>
+                            <li><i class="ri-arrow-right-up-fill"></i><a href="index.html">Home</a></li>
+                            <li><i class="ri-arrow-right-up-fill"></i><a href="Services.html">Services</a></li>
+                            <li><i class="ri-arrow-right-up-fill"></i><a href="About.html">About</a></li>
+                            <li><i class="ri-arrow-right-up-fill"></i><a href="Contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="home_logo">
+                        <a href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr2">
+
+            <div class="footer_section">
+                <div class="section2">
+                    <h2>Contact Information</h2>
+                    <h1><i class="ri-map-pin-fill"></i> K.K. SOLAR POWER SYSTEM<span>
+                            <a href="https://maps.app.goo.gl/Pak5MosBnHegqBpz6">
+                                <p>Ekta Colony, behind Mandi Samiti, Linepar, Majhola, Moradabad, 244001, U.P.</p>
+                            </a>
+                        </span></h1>
+                    <h1><i class="ri-phone-fill"></i> <a href="tel:+918218798467"></a> 8218798467, 9412373668</h1>
+                    <h1><i class="ri-mail-fill"></i> kksolar.mbd@gmail.com</h1>
+                </div>
+            </div>
+
+            <hr class="hr1">
+
+            <div class="footer_section">
+                <h2>Keep Connected</h2>
+                <ul class="social_links">
+                    <li class="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank">
+                            <i class="ri-facebook-circle-fill"></i>
+                        </a>
+                    </li>
+                    <li class="instagram">
+                        <a href="https://www.instagram.com/kksolarpowersystem/" target="_blank">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </li>
+                    <li class="whatsapp">
+                        <a href="https://wa.me/918218798467" target="_blank">
+                            <i class="ri-whatsapp-fill"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer_bottom">
+            <p>&copy; 2024 K.K. SOLAR POWER SYSTEM All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <!-- Javascript-->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('show-menu');
+        }
+
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.carousel');
+            const carouselContainer = document.querySelector('.carousel-container');
+
+            if (!carousel || !carouselContainer) {
+                console.error('Carousel or carousel container not found');
+                return; // Stop if carousel elements are not found
+            }
+
+            let scrollTimeout;
+
+            // Scroll left function
+            function scrollLeft() {
+                if (carousel) {
+                    carousel.scrollBy({
+                        left: -200,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // Scroll right function
+            function scrollRight() {
+                if (carousel) {
+                    carousel.scrollBy({
+                        left: 200,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // Show buttons and scrollbar on scroll
+            function showScroller() {
+                // Add class to show buttons
+                carouselContainer.classList.add('show-buttons');
+
+                // Clear any previously set timeout
+                clearTimeout(scrollTimeout);
+
+                // Hide buttons after 2 seconds of no scroll
+                scrollTimeout = setTimeout(() => {
+                    carouselContainer.classList.remove('show-buttons');
+                }, 2000); // You can adjust this time
+            }
+
+            // Add scroll event listener to the carousel
+            carousel.addEventListener('scroll', showScroller);
+
+            // Attach event listeners to the scroll buttons
+            const leftButton = document.querySelector('.scroll-button.left');
+            const rightButton = document.querySelector('.scroll-button.right');
+
+            // Check if buttons exist before adding event listeners
+            if (leftButton) {
+                leftButton.addEventListener('click', scrollLeft);
+            }
+
+            if (rightButton) {
+                rightButton.addEventListener('click', scrollRight);
+            }
+        });
+
+        const carousel = document.querySelector('.carousel');
+        let isHolding = false;
+        let holdTimeout;
+        let startX;
+        let scrollLeft;
+
+        // Start holding and enable scrolling after a delay
+        carousel.addEventListener('mousedown', (e) => {
+            holdTimeout = setTimeout(() => {
+                isHolding = true;
+                carousel.classList.add('active');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            }, 200); // Time delay for holding (200ms)
+        });
+
+        // Cancel holding if mouse is released before time
+        carousel.addEventListener('mouseup', () => {
+            clearTimeout(holdTimeout);
+            isHolding = false;
+            carousel.classList.remove('active');
+        });
+
+        // Cancel holding if mouse leaves the carousel
+        carousel.addEventListener('mouseleave', () => {
+            clearTimeout(holdTimeout);
+            isHolding = false;
+            carousel.classList.remove('active');
+        });
+
+        // Move the carousel when holding and moving the mouse
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isHolding) return; // Only move if holding is active
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2; // Adjust scroll speed
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        const images = [
+            '/images/beautiful-alternative-energy-plant-with-solar-panels.jpg',
+            '/images/solar_background.webp',
+            '/images/wallpaperflare.com_wallpaper.jpg',
+            '/images/img1.jpg',
+        ];
+
+        let currentIndex = 0;
+        const header = document.querySelector('.header');
+
+        function showSlide(index) {
+            if (index >= images.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = images.length - 1;
+            } else {
+                currentIndex = index;
+            }
+            header.style.backgroundImage = `url(${images[currentIndex]})`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        // Auto-scroll every 5 seconds
+        setInterval(() => {
+            nextSlide();
+        }, 5000);
+
+    </script>
+
+</body>
+
+</html>

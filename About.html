@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K.K. Solar Power System</title>
+  <link rel="icon" type="image/x-icon" href="/images/kkslogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: #333;
+      font-family: 'Fira Sans', sans-serif;
+    }
+
+    /* Social Media Top Bar */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15%;
+      background-color: #02023f;
+      color: white;
+    }
+
+    .top-bar .social-media {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar .social-media a {
+      font-size: 1rem;
+      color: white;
+      margin-right: 15px;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .top-bar .social-media a:hover {
+      color: #0456A1;
+    }
+
+    .top-bar .contact-info {
+      font-size: 0.8rem;
+      margin-right: -100px;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      display: flex;
+      position: absolute;
+      left: 0;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15%;
+      border-bottom: 1px solid #6f6e6e;
+      background: #fff;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+      /* For dropdown positioning */
+    }
+
+    /* Dropdown Menu */
+    nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      background-image: url;
+    }
+
+    nav ul li .dropdown li {
+      margin: 0;
+    }
+
+    nav ul li .dropdown li a {
+      padding: 10px 15px;
+      display: block;
+      white-space: nowrap;
+      color: #333;
+      text-decoration: none;
+    }
+
+    nav ul li .dropdown li a:hover {
+      background-color: #f5f5f5;
+      color: mediumblue;
+    }
+
+    /* Show Dropdown on Hover */
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+
+    nav li a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+    }
+
+    nav li a:hover {
+      color: mediumblue;
+    }
+
+    /* Hamburger Icon (Menu Icon) */
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition-duration: .3s;
+      display: none;
+    }
+
+    .bars {
+      width: 100%;
+      height: 4px;
+      background-color: #333;
+      border-radius: 5px;
+      transition-duration: .3s;
+    }
+
+    /* Checkbox is hidden */
+    #checkbox {
+      display: none;
+    }
+
+    #checkbox:checked+.toggle #bar1 {
+      transform: rotate(45deg);
+      transition-duration: 0.3s;
+      transform-origin: center;
+      /* Aligns the bar with the center */
+      position: relative;
+      top: 12px;
+      /* Adjust the position to match the cross alignment */
+    }
+
+    #checkbox:checked+.toggle #bar2 {
+      opacity: 0;
+      /* Hide the middle bar */
+      transition-duration: 0.3s;
+    }
+
+    #checkbox:checked+.toggle #bar3 {
+      transform: rotate(-45deg);
+      transition-duration: 0.3s;
+      transform-origin: center;
+      /* Aligns the bar with the center */
+      position: relative;
+      top: -15px;
+      /* Adjust the position to match the cross alignment */
+    }
+
+    /* Responsive Styles for Small Screens */
+    @media (max-width: 768px) {
+      .logo img {
+        height: 70px;
+      }
+
+      nav ul {
+        max-height: 0;
+        /* Initially hidden */
+        opacity: 0;
+        overflow: hidden;
+        /* Prevent content from overflowing */
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+        /* No padding initially */
+        top: 90px;
+        /* Adjusted for the navbar height */
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+      }
+
+      nav ul.show-menu {
+        max-height: 500px;
+        /* Adjust based on the expected height of the menu */
+        opacity: 1;
+        padding: 10px 0;
+        /* Add padding back when shown */
+      }
+
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      nav ul li a {
+        color: #333;
+        font-size: 18px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      }
+
+      /* Show the toggle (hamburger) on small screens */
+      .toggle {
+        display: flex;
+      }
+
+      /* Show the menu when the checkbox is checked */
+      #checkbox:checked~nav ul {
+        display: flex;
+      }
+
+      /* Class to handle menu toggle */
+      .show-menu {
+        display: flex;
+      }
+
+      .contact-info {
+        display: none;
+      }
+
+      .top-bar .social-media a {
+        font-size: 1.5rem
+      }
+
+      .vision {
+        margin: 0 auto;
+        max-width: 400px;
+
+      }
+
+      .vision-list ol {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .vision-list {
+        margin: 0 10px;
+      }
+    }
+
+    /* Footer */
+    .footer p {
+      background-color: #141414;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* main body content */
+
+    .header {
+      padding: 150px 0;
+      color: #fff;
+      text-align: center;
+      background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    }
+
+
+    .header h1 {
+      font-size: 4rem;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 100px;
+    }
+
+    /* Main Content */
+    .header {
+      padding: 150px 0;
+      color: #fff;
+      text-align: center;
+      background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .main_content {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .separator {
+      border: none;
+      height: 1px;
+      background-color: #ccc;
+      margin: 40px 0;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 100px auto;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      text-align: justify;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .vision {
+      max-width: 800px;
+      margin: 60px auto;
+      text-align: left;
+    }
+
+    .vision h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .vision p {
+      text-align: justify;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.6;
+    }
+
+    .vision-list {
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+
+    .vision-list ol {
+      display: flex;
+      gap: 40px;
+      list-style: bold;
+    }
+
+    .vision-list ol li {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .owner {
+      max-width: 800px;
+      margin: 60px auto;
+    }
+
+
+    .owner h2 {
+      font-family: 'Raleway', sans-serif;
+
+    }
+
+    .owner p {
+      font-family: 'Raleway', sans-serif;
+      ;
+    }
+
+    .about_us_points {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 0px auto;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    /* Individual Point Cards */
+    .about_us_points .points {
+      border-radius: 15px;
+      overflow: hidden;
+      flex: 1 1 calc(25% - 40px);
+      padding: 20px;
+      text-align: center;
+      min-width: 250px;
+    }
+
+    /* Points Content */
+    .points img {
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .points:hover img {
+      transform: rotate(10deg);
+    }
+
+    .points p {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #333;
+      font-family: 'Franklin Gothic Medium';
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Social Media and Contact Section -->
+  <div class="top-bar">
+    <div class="social-media">
+      <a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank"><i
+          class="ri-facebook-circle-fill"></i></a>
+      <a href="https://www.instagram.com/kksolarpowersystem/" target="_blank"><i class="ri-instagram-fill"></i></a>
+    </div>
+
+    <div class="contact-info">
+      <span>Email: kksolar.mbd@gmail.com | Phone: +91 8218798467</span>
+    </div>
+  </div>
+
+
+  <!-- navbar -->
+  <nav>
+    <a class="logo" href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="dropdown">
+          <li><a href="#">Solar Rooftop Systems (Subsidy Rooftop Systems)</a></li>
+          <li><a href="#">Solar Power System Installation</a></li>
+          <li><a href="#">Solar Maintenance</a></li>
+          <li><a href="#">Solar Residential Systems</a></li>
+          <li><a href="#">Solar Commercial Solutions</a></li>
+          <li><a href="#">Solar Atta Chakki</a></li>
+          <li><a href="#">Solar Irrigation Systems <span>(Solar Water Pumps for Irrigation)</span></a></li>
+          <li><a href="#">Solar Electric Fencing</a></li>
+        </ul>
+      </li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="About.html">About Us</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+    </ul>
+
+    <input type="checkbox" id="checkbox" onclick="toggleMenu()">
+    <label for="checkbox" class="toggle">
+      <div class="bars" id="bar1"></div>
+      <div class="bars" id="bar2"></div>
+      <div class="bars" id="bar3"></div>
+    </label>
+  </nav>
+
+  <!-- header -->
+
+  <div class="header">
+    <h1>About Us</h1>
+  </div>
+
+  <div class="main_content">
+    <div class="content">
+      <p>K.K. Solar Power System is a leading provider of comprehensive solar energy solutions. With 31 years of
+        experience in the solar industry, we are dedicated to providing high-quality products and exceptional customer
+        service to help our clients harness the power of the sun. Over the years, we have built a reputation for
+        reliability and innovation, delivering energy-efficient solutions tailored to meet the specific needs of our
+        customers. Our expertise spans a wide range of applications, from small residential setups to large-scale
+        commercial and industrial projects.</p>
+
+      <p>Our mission is to make solar energy accessible and affordable for everyone, and to contribute to a greener and
+        more sustainable future. We offer a range of solar solutions for <strong>residential, commercial, and industrial
+          applications, including the sale, installation, and maintenance of solar panels and systems.</strong>
+        <span>We believe in empowering individuals and businesses to reduce their carbon footprint while achieving
+          energy independence. By
+          continuously embracing the latest advancements in solar technology, we strive to maximize energy efficiency
+          and
+          provide long-term value for our clients.</span>
+      </p>
+    </div>
+
+    <div class="contect_images">
+      <div class="about_us_points">
+        <div class="points">
+          <img src="/images/maintenance (2).png" alt="xpert Solar Installations">
+          <p>Expert Solar Installations</p>
+        </div>
+        <div class="points">
+          <img src="/images/upcycling.png" alt="Sustainability Focused">
+          <p>Sustainability Focused</p>
+        </div>
+        <div class="points">
+          <img src="/images/customer.png" alt="Customer-Centric Service">
+          <p>Customer-Centric Service</p>
+        </div>
+        <div class="points">
+          <img src="/images/solar-energy.png" alt="High-Quality Equipment">
+          <p>High-Quality Equipment</p>
+        </div>
+      </div>
+    </div>
+    <hr class="separator">
+
+    <div class="vision-points">
+      <div class="vision">
+        <h2>Our Vision and Core Values</h2>
+        <p>At K.K. Solar Power System, our guiding vision is to become a trailblazer in the renewable energy sector,
+          driving change through innovative solar technologies. We believe in creating a sustainable future where solar
+          energy is accessible to everyone, helping individuals and businesses reduce their environmental impact and
+          achieve energy independence. <strong>This vision is built on four core values that shape everything we
+            do:</strong>
+        </p>
+      </div>
+
+      <div class="vision-list">
+        <ol>
+          <li>Commintment to Sustainability</li>
+          <li>Focus on Innovation and Cutting-Edge Technology</li>
+          <li>Customer-Centric Approach</li>
+          <li>Community Impact and Environmental Responsibility</li>
+        </ol>
+      </div>
+    </div>
+    <hr class="separator">
+  </div>
+
+
+
+  <!-- footer -->
+  <footer>
+    <div class="footer">
+      <p>&copy; 2024 K.K. SOLAR POWER SYSTEM All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- javascript -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show-menu');
+    }
+  </script>
+</body>
+
+</html>
