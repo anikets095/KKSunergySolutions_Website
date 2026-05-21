@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - K.K. Solar Power System</title>
+  <title>Contact Us - K.K. Sunergy Solutions</title>
   <link rel="icon" type="image/x-icon" href="/images/kkslogo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +77,7 @@
     }
 
     .logo img {
-      height: 100px;
+      height: 70px;
       width: auto;
     }
 
@@ -473,14 +473,14 @@
         max-width: 800px;
       }
 
-      .container{
+      .container {
         max-width: 300px;
         width: 100%;
       }
     }
 
     .footer {
-      background-color: #141414;
+      background-color: #333;
       color: #fff;
       display: flex;
       justify-content: space-between;
@@ -579,7 +579,7 @@
       /* Adds padding for spacing */
     }
 
-    .section2 span p{
+    .section2 span p {
       width: 270px;
     }
 
@@ -598,7 +598,7 @@
     .quick_access ul li {
       list-style: none;
     }
-                                                                                              
+
     .quick_access a {
       text-decoration: none;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -612,9 +612,8 @@
     }
 
     .home_logo img {
-      height: 100px;
+      height: 60px;
       cursor: pointer;
-      border-radius: 50%;
       object-fit: cover;
       transition: box-shadow 0.3s ease;
       /* Smooth transition for the shadow */
@@ -680,6 +679,24 @@
     .footer-home {
       display: flex;
     }
+
+    .invalid-feedback,
+    .empty-feedback {
+      display: none;
+    }
+
+    .was-validated :placeholder-shown:invalid~.empty-feedback {
+      display: block;
+    }
+
+    .was-validated :not(:placeholder-shown):invalid~.invalid-feedback {
+      display: block;
+    }
+
+    .is-invalid,
+    .was-validated :invalid {
+      border-color: #dc3545;
+    }
   </style>
 </head>
 
@@ -699,7 +716,7 @@
   </div>
   <!-- Navigation Bar-->
   <nav>
-    <a class="logo" href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+    <a class="logo" href="index.html"><img src="/images/kkss_logo.png" alt="K.K. Sunergy Solutions Logo"></a>
     <ul id="nav-menu">
       <li><a href="index.html">Home</a></li>
       <li>
@@ -729,30 +746,96 @@
   </nav>
   <!-- Navigation Bar end-->
 
-  <div class="container">
-    <div class="contact">
-      <form id="contactForm">
-        <h1>Contact Us</h1>
-        <div class="form-group">
-          <label for="name">Name<span class="required">*</span></label>
-          <input type="text" id="name" name="name" required>
+  <!-- 
+    =======================================================================
+
+    This is a working contact form. To receive email, 
+    Replace YOUR_ACCESS_KEY_HERE with your actual Access Key.
+
+    Create Access Key here 👉 https://web3forms.com/
+
+    =======================================================================
+ -->
+
+  <div class="flex items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto">
+      <div class="max-w-xl mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
+        <div class="text-center">
+          <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
+            Contact Us
+          </h1>
+          <p class="text-gray-400 dark:text-gray-400">
+            Fill up the form below to send us a message.
+          </p>
         </div>
-        <div class="form-group">
-          <label for="email">Email<span class="required">*</span></label>
-          <input type="email" id="email" name="email" required>
+        <div class="m-7">
+          <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation" novalidate>
+            <input type="hidden" name="access_key" value="0d2ab93a-abbc-40c0-b9d5-4464842a8d54" />
+            <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+            <input type="checkbox" name="botcheck" id="" style="display: none;" />
+
+            <div class="flex mb-6 space-x-4">
+              <div class="w-full md:w-1/2">
+                <label for="fname" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">First Name</label>
+                <input type="text" name="name" id="first_name" placeholder="John" required
+                  class="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+                  Please provide your first name.
+                </div>
+              </div>
+              <div class="w-full md:w-1/2">
+                <label for="lname" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Last Name</label>
+                <input type="text" name="last_name" id="lname" placeholder="Doe" required
+                  class="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+                  Please provide your last name.
+                </div>
+              </div>
+            </div>
+
+            <div class="flex mb-6 space-x-4">
+              <div class="w-full md:w-1/2">
+                <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="you@company.com" required
+                  class="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                <div class="empty-feedback text-red-400 text-sm mt-1">
+                  Please provide your email address.
+                </div>
+                <div class="invalid-feedback text-red-400 text-sm mt-1">
+                  Please provide a valid email address.
+                </div>
+              </div>
+
+              <div class="w-full md:w-1/2">
+                <label for="phone" class="block text-sm mb-2 text-gray-600 dark:text-gray-400">Phone Number</label>
+                <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required
+                  class="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+
+                <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+                  Please provide your phone number.
+                </div>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Your Message</label>
+
+              <textarea rows="5" name="message" id="message" placeholder="Your Message"
+                class="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                required></textarea>
+              <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+                Please enter your message.
+              </div>
+            </div>
+            <div class="mb-6">
+              <button type="submit"
+                class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">
+                Send Message
+              </button>
+            </div>
+            <p class="text-base text-center text-gray-400" id="result"></p>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="phone">Phone<span class="required">*</span></label>
-          <input type="tel" id="phone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message<span class="required">*</span></label>
-          <textarea name="message" id="message" required></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" id="sendus">Submit</button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 
@@ -796,6 +879,81 @@
         alert('There was an error processing your request.');
       }
     });
+
+    (function () {
+  "use strict";
+  /*
+   * Form Validation
+   */
+
+  // Fetch all the forms we want to apply custom validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+  const result = document.getElementById("result");
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          form.querySelectorAll(":invalid")[0].focus();
+        } else {
+          /*
+           * Form Submission using fetch()
+           */
+
+          const formData = new FormData(form);
+          event.preventDefault();
+          event.stopPropagation();
+          const object = {};
+          formData.forEach((value, key) => {
+            object[key] = value;
+          });
+          const json = JSON.stringify(object);
+          result.innerHTML = "Please wait...";
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: json
+          })
+            .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                result.innerHTML = json.message;
+                result.classList.remove("text-gray-500");
+                result.classList.add("text-green-500");
+              } else {
+                console.log(response);
+                result.innerHTML = json.message;
+                result.classList.remove("text-gray-500");
+                result.classList.add("text-red-500");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              result.innerHTML = "Something went wrong!";
+            })
+            .then(function () {
+              form.reset();
+              form.classList.remove("was-validated");
+              setTimeout(() => {
+                result.style.display = "none";
+              }, 5000);
+            });
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
+
   </script>
 
   <!-- footer-->
@@ -805,7 +963,7 @@
         <div class="footer_section">
           <h2>More About Us</h2>
           <p>
-            K.K. Solar Power System is dedicated to providing sustainable energy solutions through innovative solar
+            K.K. Sunergy Solutions is dedicated to providing sustainable energy solutions through innovative solar
             projects. We specialize in designing, installing, and maintaining solar power systems for homes, businesses,
             and industries. Our goal is to deliver high-quality, reliable, and cost-effective solar solutions.
           </p>
@@ -821,7 +979,7 @@
               </ul>
             </div>
             <div class="home_logo">
-              <a href="index.html"><img src="/images/kkslogo.png" alt="K.K. Solar Power System Logo"></a>
+              <a href="index.html"><img src="/images/kkss_logo.png" alt="K.K. Sunergy Solutions Logo"></a>
             </div>
           </div>
         </div>
@@ -830,7 +988,7 @@
         <div class="footer_section">
           <div class="section2">
             <h2>Contact Information</h2>
-            <h1><i class="ri-map-pin-fill"></i> K.K. SOLAR POWER SYSTEM<span>
+            <h1><i class="ri-map-pin-fill"></i> K.K. SUNERGY SOLUTIONS<span>
                 <p>Ekta Colony, behind Mandi Samiti, Linepar, Majhola, Moradabad, 244001, U.P.</p>
               </span></h1>
             <h1><i class="ri-phone-fill"></i> Phone
@@ -861,7 +1019,7 @@
             <ul class="social_links">
               <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100063797927781" target="_blank"><i
                     class="ri-facebook-circle-fill"></i></a></li>
-              <li class="instagram"><a href="https://www.instagram.com/kksolarpowersystem/" target="_blank"><i
+              <li class="instagram"><a href="https://www.instagram.com/kksunergysolutions/" target="_blank"><i
                     class="ri-instagram-fill"></i></a></li>
               <li class="whatsapp"><a href="https://wa.me/918218798467" target="_blank"><i
                     class="ri-whatsapp-fill"></i></a></li>
@@ -870,7 +1028,7 @@
         </div>
       </div>
       <div class="footer_bottom">
-        <p>&copy; 2024 K.K. SOLAR POWER SYSTEM All Rights Reserved</p>
+        <p>&copy; 2024 K.K. SUNERGY SOLUTIONS All Rights Reserved</p>
       </div>
     </div>
   </footer>
